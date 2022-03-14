@@ -46,15 +46,11 @@ const CurrentGame = ({
           <Label>WINNER</Label>
         </View>
         <Row>
-          <HomeWinnerButton>
-            <WinnerButtonText onPress={() => homeTeamSetIncrement()}>
-              HOME
-            </WinnerButtonText>
+          <HomeWinnerButton onPress={() => homeTeamSetIncrement()}>
+            <WinnerButtonText>HOME</WinnerButtonText>
           </HomeWinnerButton>
-          <VisitorWinnerButton>
-            <WinnerButtonText onPress={() => visitorTeamSetIncrement()}>
-              VISITOR
-            </WinnerButtonText>
+          <VisitorWinnerButton onPress={() => visitorTeamSetIncrement()}>
+            <WinnerButtonText>VISITOR</WinnerButtonText>
           </VisitorWinnerButton>
         </Row>
       </WinnerSection>
