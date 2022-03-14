@@ -1,0 +1,1 @@
+export const RESET_EVERYTHING = 'RESET_EVERYTHING';
