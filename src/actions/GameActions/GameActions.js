@@ -1,24 +1,18 @@
 import {createAction} from 'redux-actions';
 import {
-  CURRENT_GAME_INCREMENT_HOME,
-  CURRENT_GAME_DECREMENT_HOME,
-  CURRENT_GAME_INCREMENT_VISITOR,
-  CURRENT_GAME_DECREMENT_VISITOR,
-  SET_HOME_TEAM_SCORE,
-  SET_VISITOR_TEAM_SCORE,
+  INCREMENT_HOME_TEAM_GAME,
+  INCREMENT_VISITOR_TEAM_GAME,
+  DECREMENT_HOME_TEAM_GAME,
+  DECREMENT_VISITOR_TEAM_GAME,
+  RESET_GAMES,
 } from '.';
 
-export const currentGameIncrementHomeTeam = createAction(
-  CURRENT_GAME_INCREMENT_HOME,
+export const gameIncrementHomeTeam = createAction(INCREMENT_HOME_TEAM_GAME);
+export const gameDecrementHomeTeam = createAction(DECREMENT_HOME_TEAM_GAME);
+export const gameIncrementVisitorTeam = createAction(
+  INCREMENT_VISITOR_TEAM_GAME,
 );
-export const currentGameDecrementHomeTeam = createAction(
-  CURRENT_GAME_DECREMENT_HOME,
+export const gameDecrementVisitorTeam = createAction(
+  DECREMENT_VISITOR_TEAM_GAME,
 );
-export const currentGameIncrementVisitorTeam = createAction(
-  CURRENT_GAME_INCREMENT_VISITOR,
-);
-export const currentGameDecrementVisitorTeam = createAction(
-  CURRENT_GAME_DECREMENT_VISITOR,
-);
-export const setHomeTeamScore = createAction(SET_HOME_TEAM_SCORE);
-export const setVisitorTeamScore = createAction(SET_VISITOR_TEAM_SCORE);
+export const resetGames = createAction(RESET_GAMES);

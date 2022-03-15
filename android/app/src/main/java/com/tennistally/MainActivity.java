@@ -1,4 +1,4 @@
-package com.tennistally;
+package com.tennistally.tennistally;
 
 import com.facebook.react.ReactActivity;
 

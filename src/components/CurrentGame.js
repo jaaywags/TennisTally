@@ -1,30 +1,33 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, FlatList} from 'react-native';
+import uuid from 'react-native-uuid';
 import {connect} from 'react-redux';
 import {
   currentGameIncrementHomeTeam,
   currentGameDecrementHomeTeam,
   currentGameIncrementVisitorTeam,
   currentGameDecrementVisitorTeam,
+} from '../actions/CurrentGameActions/CurrentGameActions';
+import {
+  gameIncrementHomeTeam,
+  gameIncrementVisitorTeam,
 } from '../actions/GameActions/GameActions';
 import {
   setIncrementHomeTeam,
   setIncrementVisitorTeam,
 } from '../actions/SetActions/SetActions';
+import {PlusMinus, TeamWinnerBtn} from './shared';
 import {
   Wrapper,
-  WinnerSection,
+  MatchScoreContainer,
+  MatchScoreText,
+  MatchScoreLabelContainer,
+  SetSection,
+  GameSection,
   HomeSection,
   VisitorSection,
-  Row,
   Label,
-  MinusButton,
-  PlusButton,
-  ButtonText,
-  ScoreText,
-  HomeWinnerButton,
-  VisitorWinnerButton,
-  WinnerButtonText,
+  CurrentGameSection,
 } from './styles';
 
 const CurrentGame = ({
@@ -34,58 +37,80 @@ const CurrentGame = ({
   homeTeamDecrement,
   visitorTeamIncrement,
   visitorTeamDecrement,
-  homeTeamSets,
-  visitorTeamSets,
+  sets,
+  homeTeamGames,
+  visitorTeamGames,
   homeTeamSetIncrement,
   visitorTeamSetIncrement,
+  homeTeamGameIncrement,
+  visitorTeamGameIncrement,
 }) => {
+  const homeSetsSum = sets.filter(set => set.isHomeWinner).length;
+  const visitorSetsSum = sets.filter(set => !set.isHomeWinner).length;
   return (
     <Wrapper>
-      <WinnerSection>
+      <MatchScoreContainer>
+        <MatchScoreLabelContainer>
+          <Text>Home: </Text>
+          <Text>Visitor: </Text>
+        </MatchScoreLabelContainer>
+        <FlatList
+          horizontal={true}
+          data={sets}
+          renderItem={({item}) => {
+            return (
+              <View>
+                <MatchScoreText bold={item.isHomeWinner}>
+                  {item.home}
+                </MatchScoreText>
+                <MatchScoreText bold={!item.isHomeWinner}>
+                  {item.visitor}
+                </MatchScoreText>
+              </View>
+            );
+          }}
+          keyExtractor={() => uuid.v4()}
+        />
+      </MatchScoreContainer>
+      <SetSection>
+        <TeamWinnerBtn
+          homeValue={homeSetsSum}
+          visitorValue={visitorSetsSum}
+          homeCallback={homeTeamSetIncrement}
+          visitorCallback={visitorTeamSetIncrement}
+          label="SETS"
+        />
+      </SetSection>
+      <GameSection>
+        <TeamWinnerBtn
+          homeValue={homeTeamGames}
+          visitorValue={visitorTeamGames}
+          homeCallback={homeTeamGameIncrement}
+          visitorCallback={visitorTeamGameIncrement}
+          label="GAMES"
+        />
+      </GameSection>
+      <CurrentGameSection>
         <View>
-          <Label>WINNER</Label>
+          <Label>Current Game</Label>
         </View>
-        <Row>
-          <HomeWinnerButton onPress={() => homeTeamSetIncrement()}>
-            <WinnerButtonText>HOME</WinnerButtonText>
-          </HomeWinnerButton>
-          <VisitorWinnerButton onPress={() => visitorTeamSetIncrement()}>
-            <WinnerButtonText>VISITOR</WinnerButtonText>
-          </VisitorWinnerButton>
-        </Row>
-      </WinnerSection>
-      <HomeSection>
-        <View>
-          <Label>HOME - {homeTeamSets}</Label>
-        </View>
-        <Row>
-          <MinusButton onPress={homeTeamDecrement}>
-            <ButtonText>-</ButtonText>
-          </MinusButton>
-          <ScoreText>
-            <Text>{homeTeamScore}</Text>
-          </ScoreText>
-          <PlusButton onPress={() => homeTeamIncrement()}>
-            <ButtonText>+</ButtonText>
-          </PlusButton>
-        </Row>
-      </HomeSection>
-      <VisitorSection>
-        <View>
-          <Label>VISITOR - {visitorTeamSets}</Label>
-        </View>
-        <Row>
-          <MinusButton onPress={() => visitorTeamDecrement()}>
-            <ButtonText>-</ButtonText>
-          </MinusButton>
-          <ScoreText>
-            <Text>{visitorTeamScore}</Text>
-          </ScoreText>
-          <PlusButton onPress={() => visitorTeamIncrement()}>
-            <ButtonText>+</ButtonText>
-          </PlusButton>
-        </Row>
-      </VisitorSection>
+        <HomeSection>
+          <PlusMinus
+            minusBtnCallback={homeTeamDecrement}
+            plusBtnCallback={homeTeamIncrement}
+            label="HOME"
+            value={homeTeamScore}
+          />
+        </HomeSection>
+        <VisitorSection>
+          <PlusMinus
+            minusBtnCallback={visitorTeamDecrement}
+            plusBtnCallback={visitorTeamIncrement}
+            label="VISITOR"
+            value={visitorTeamScore}
+          />
+        </VisitorSection>
+      </CurrentGameSection>
     </Wrapper>
   );
 };
@@ -93,8 +118,9 @@ const CurrentGame = ({
 const mapStateToProps = state => ({
   homeTeamScore: state.currentGame.homeTeamFriendly,
   visitorTeamScore: state.currentGame.visitorTeamFriendly,
-  homeTeamSets: state.sets.homeTeam,
-  visitorTeamSets: state.sets.visitorTeam,
+  sets: state.sets.sets,
+  homeTeamGames: state.games.homeTeam,
+  visitorTeamGames: state.games.visitorTeam,
 });
 const mapDispatchToProps = dispatch => ({
   homeTeamIncrement: () => dispatch(currentGameIncrementHomeTeam()),
@@ -103,5 +129,7 @@ const mapDispatchToProps = dispatch => ({
   visitorTeamDecrement: () => dispatch(currentGameDecrementVisitorTeam()),
   homeTeamSetIncrement: () => dispatch(setIncrementHomeTeam()),
   visitorTeamSetIncrement: () => dispatch(setIncrementVisitorTeam()),
+  homeTeamGameIncrement: () => dispatch(gameIncrementHomeTeam()),
+  visitorTeamGameIncrement: () => dispatch(gameIncrementVisitorTeam()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentGame);

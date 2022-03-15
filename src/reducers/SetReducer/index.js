@@ -1,25 +1,74 @@
 import {
-  INCREMENT_HOME_TEAM_SET,
-  INCREMENT_VISITOR_TEAM_SET,
+  COMPLETE_SET,
+  DECREASE_SPECIFIC_SET_FOR_HOME_TEAM,
+  INCREASE_SPECIFIC_SET_FOR_HOME_TEAM,
+  DECREASE_SPECIFIC_SET_FOR_VISITOR_TEAM,
+  INCREASE_SPECIFIC_SET_FOR_VISITOR_TEAM,
 } from '../../actions/SetActions';
 import {RESET_EVERYTHING} from '../../actions/MatchActions';
 const initialState = {
-  homeTeam: 0,
-  visitorTeam: 0,
+  sets: [],
 };
 
 const setReducer = (state = initialState, action) => {
   switch (action.type) {
-    case INCREMENT_HOME_TEAM_SET:
+    case COMPLETE_SET:
       return {
         ...state,
-        homeTeam: state.homeTeam + 1,
+        sets: [...state.sets, action.payload],
       };
-    case INCREMENT_VISITOR_TEAM_SET:
+    case INCREASE_SPECIFIC_SET_FOR_HOME_TEAM: {
+      const newSets = [...state.sets];
+      const setToModify = {...newSets[action.payload.index]};
+      newSets[action.payload.index] = {
+        ...setToModify,
+        home: setToModify.home + 1,
+        isHomeWinner: setToModify.home + 1 >= setToModify.visitor,
+      };
       return {
         ...state,
-        visitorTeam: state.visitorTeam + 1,
+        sets: newSets,
       };
+    }
+    case DECREASE_SPECIFIC_SET_FOR_HOME_TEAM: {
+      const newSets = [...state.sets];
+      const setToModify = {...newSets[action.payload.index]};
+      newSets[action.payload.index] = {
+        ...setToModify,
+        home: setToModify.home <= 0 ? 0 : setToModify.home - 1,
+        isHomeWinner: setToModify.home - 1 >= setToModify.visitor,
+      };
+      return {
+        ...state,
+        sets: newSets,
+      };
+    }
+    case INCREASE_SPECIFIC_SET_FOR_VISITOR_TEAM: {
+      const newSets = [...state.sets];
+      const setToModify = {...newSets[action.payload.index]};
+      newSets[action.payload.index] = {
+        ...setToModify,
+        visitor: setToModify.visitor + 1,
+        isHomeWinner: setToModify.home >= setToModify.visitor + 1,
+      };
+      return {
+        ...state,
+        sets: newSets,
+      };
+    }
+    case DECREASE_SPECIFIC_SET_FOR_VISITOR_TEAM: {
+      const newSets = [...state.sets];
+      const setToModify = {...newSets[action.payload.index]};
+      newSets[action.payload.index] = {
+        ...setToModify,
+        visitor: setToModify.visitor <= 0 ? 0 : setToModify.visitor - 1,
+        isHomeWinner: setToModify.home >= setToModify.visitor - 1,
+      };
+      return {
+        ...state,
+        sets: newSets,
+      };
+    }
     case RESET_EVERYTHING:
       return initialState;
     default:
