@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import uuid from 'react-native-uuid';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -73,32 +73,28 @@ const MatchSettings = ({
                 return (
                   <Center>
                     <ModifyScoreCell odd={(index + 1) % 2 === 0}>
-                      <FontAwesomeIcon
-                        icon={faAngleUp}
-                        size={32}
-                        onPress={() => increaseSetForHomeTeam(index)}
-                      />
+                      <TouchableOpacity
+                        onPress={() => increaseSetForHomeTeam(index)}>
+                        <FontAwesomeIcon icon={faAngleUp} size={32} />
+                      </TouchableOpacity>
                       <ModifyMatchScoreText>{item.home}</ModifyMatchScoreText>
-                      <FontAwesomeIcon
-                        icon={faAngleDown}
-                        size={32}
-                        onPress={() => decreaseSetForHomeTeam(index)}
-                      />
+                      <TouchableOpacity
+                        onPress={() => decreaseSetForHomeTeam(index)}>
+                        <FontAwesomeIcon icon={faAngleDown} size={32} />
+                      </TouchableOpacity>
                     </ModifyScoreCell>
                     <ModifyScoreCell odd={(index + 1) % 2 === 0}>
-                      <FontAwesomeIcon
-                        icon={faAngleUp}
-                        size={32}
-                        onPress={() => increaseSetForVisitorTeam(index)}
-                      />
+                      <TouchableOpacity
+                        onPress={() => increaseSetForVisitorTeam(index)}>
+                        <FontAwesomeIcon icon={faAngleUp} size={32} />
+                      </TouchableOpacity>
                       <ModifyMatchScoreText>
                         {item.visitor}
                       </ModifyMatchScoreText>
-                      <FontAwesomeIcon
-                        icon={faAngleDown}
-                        size={32}
-                        onPress={() => decreaseSetForVisitorTeam(index)}
-                      />
+                      <TouchableOpacity
+                        onPress={() => decreaseSetForVisitorTeam(index)}>
+                        <FontAwesomeIcon icon={faAngleDown} size={32} />
+                      </TouchableOpacity>
                     </ModifyScoreCell>
                     <ModifyScoreExtraCell odd={(index + 1) % 2 === 0}>
                       <Text>{index + 1}</Text>
