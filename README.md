@@ -1,10 +1,9 @@
 # TennisTally
 
-A little React Native app developed for practice. It can be used to keep track of scoring in a tennis game.
+A little React Native app developed for practice. It can be used to keep track of scoring in a tennis match.
 
 ## Demo
-
-![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158088153-53570edf-67d9-4c80-b0c2-56a04a4bee87.gif)
+![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158404061-790c4750-1e3a-47ad-870f-557a9bdad6b1.gif)
 
 ## Running Locally
 
