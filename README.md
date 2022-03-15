@@ -72,5 +72,5 @@ I wrote these steps from memory. Did not test them. There may be other steps nee
 2. In the terminal, run `pod install`
 3. Update version in xcode
 4. Build in xcode
-5. archive in xcode
+5. Archive in xcode
 6. Go to App Store Connect & Update Version
