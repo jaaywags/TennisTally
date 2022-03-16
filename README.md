@@ -3,7 +3,8 @@
 A little React Native app developed for practice. It can be used to keep track of scoring in a tennis match.
 
 ## Demo
-![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158694783-af1e39bc-2306-4300-9dd6-5a38eabc54cd.gif)
+![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158697208-b58799c9-e107-4882-8e20-0761f50c6b6c.gif)
+
 
 ## Running Locally
 
