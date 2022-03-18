@@ -2,6 +2,8 @@
 
 A little React Native app developed for practice. It can be used to keep track of scoring in a tennis match.
 
+This app is now available on both the [App Store](https://apps.apple.com/app/tennis-tally-scoring/id1614450619) and [Play Store](https://play.google.com/store/apps/details?id=com.tennistally.tennistally).
+
 ## Demo
 ![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158697208-b58799c9-e107-4882-8e20-0761f50c6b6c.gif)
 
@@ -39,7 +41,7 @@ A little React Native app developed for practice. It can be used to keep track o
 
 The previous command should automaticall install and run the app on the emulator. As you make changes, they should automatically reflect in this emulator as well.
 
-### Starting the Project for Android
+### Starting the Project for iOS
 
 1. In the terminal, run `npm i`
 2. In the terminal, run `cd ios`
@@ -66,7 +68,7 @@ I wrote these steps from memory. Did not test them. There may be other steps nee
 5. In the terminal, run `./gradlew bundleRelease`
 6. Upload `./android/app/build/outputs/bundle/release/app-release.aab` to play store
 
-### Ios
+### iOS
 
 1. In the terminal, run `cd ios`
 2. In the terminal, run `pod install`
