@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AD76744727E679E20062D345"
+               BuildableName = "TennisTallyWatch.app"
+               BlueprintName = "TennisTallyWatch"
+               ReferencedContainer = "container:TennisTally.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "TennisTally.app"
                BlueprintName = "TennisTally"
@@ -28,16 +42,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "TennisTallyTests.xctest"
-               BlueprintName = "TennisTallyTests"
-               ReferencedContainer = "container:TennisTally.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -54,9 +58,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TennisTally.app"
-            BlueprintName = "TennisTally"
+            BlueprintIdentifier = "AD76744727E679E20062D345"
+            BuildableName = "TennisTallyWatch.app"
+            BlueprintName = "TennisTallyWatch"
             ReferencedContainer = "container:TennisTally.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,9 +75,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TennisTally.app"
-            BlueprintName = "TennisTally"
+            BlueprintIdentifier = "AD76744727E679E20062D345"
+            BuildableName = "TennisTallyWatch.app"
+            BlueprintName = "TennisTallyWatch"
             ReferencedContainer = "container:TennisTally.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

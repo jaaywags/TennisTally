@@ -27,6 +27,7 @@
     "react-native-screens": "^3.13.1",
     "react-native-svg": "^12.3.0",
     "react-native-uuid": "^2.0.1",
+    "react-native-watch-connectivity": "^1.0.4",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-actions": "^2.6.5",

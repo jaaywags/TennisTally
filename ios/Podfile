@@ -27,4 +27,6 @@ target 'TennisTally' do
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
+
+  pod 'RNWatch', :path => '../node_modules/react-native-watch-connectivity'
 end
