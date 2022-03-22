@@ -30,48 +30,50 @@ struct ContentView: View {
   private var communicationHelper = CommunicationHelper()
   
     var body: some View {
-      VStack {
-        Text("SETS")
-        HStack {
-          Button("HOME", action: {
-            self.communicationHelper.increaseHomeSet()
-          })
-          .buttonStyle(FilledButton(isHome: true))
-          .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
-          Button("AWAY", action: {
-            self.communicationHelper.increaseVisitorSet()
-          })
-          .buttonStyle(FilledButton(isHome: false))
-          .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
-        }
-        Text("GAMES")
-          .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-        HStack {
-          Button("HOME", action: {
-            self.communicationHelper.increaseHomeGame()
-          })
-          .buttonStyle(FilledButton(isHome: true))
-          .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
-          Button("AWAY", action: {
-            self.communicationHelper.increaseVisitorGame()
-          })
-          .buttonStyle(FilledButton(isHome: false))
-          .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
-          
-        }
-        Text("Current Game")
-          .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-        HStack {
-          Button("HOME", action: {
-            self.communicationHelper.increaseHomeCurrentGame()
-          })
-          .buttonStyle(FilledButton(isHome: true))
-          .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
-          Button("AWAY", action: {
-            self.communicationHelper.increaseVisitorCurrentGame()
-          })
-          .buttonStyle(FilledButton(isHome: false))
-          .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
+      ScrollView {
+        VStack {
+          Text("SETS")
+          HStack {
+            Button("HOME", action: {
+              self.communicationHelper.increaseHomeSet()
+            })
+            .buttonStyle(FilledButton(isHome: true))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+            Button("AWAY", action: {
+              self.communicationHelper.increaseVisitorSet()
+            })
+            .buttonStyle(FilledButton(isHome: false))
+            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
+          }
+          Text("GAMES")
+            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+          HStack {
+            Button("HOME", action: {
+              self.communicationHelper.increaseHomeGame()
+            })
+            .buttonStyle(FilledButton(isHome: true))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+            Button("AWAY", action: {
+              self.communicationHelper.increaseVisitorGame()
+            })
+            .buttonStyle(FilledButton(isHome: false))
+            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
+            
+          }
+          Text("Current Game")
+            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+          HStack {
+            Button("HOME", action: {
+              self.communicationHelper.increaseHomeCurrentGame()
+            })
+            .buttonStyle(FilledButton(isHome: true))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5))
+            Button("AWAY", action: {
+              self.communicationHelper.increaseVisitorCurrentGame()
+            })
+            .buttonStyle(FilledButton(isHome: false))
+            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
+          }
         }
       }
     }

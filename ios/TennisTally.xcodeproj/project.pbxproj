@@ -100,6 +100,7 @@
 		AD76745E27E679E90062D345 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AD76746027E679E90062D345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD76746F27E7B9410062D345 /* CommunicationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationHelper.swift; sourceTree = "<group>"; };
+		AD76748027E99A270062D345 /* TennisTallyWatch WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TennisTallyWatch WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		C340AC208E06F93249AE18D3 /* libPods-TennisTally.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TennisTally.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -224,6 +225,7 @@
 		AD76745427E679E70062D345 /* TennisTallyWatch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AD76748027E99A270062D345 /* TennisTallyWatch WatchKit Extension-Bridging-Header.h */,
 				AD76746F27E7B9410062D345 /* CommunicationHelper.swift */,
 				AD76745527E679E70062D345 /* ContentView.swift */,
 				AD76745727E679E70062D345 /* TennisTallyApp.swift */,
