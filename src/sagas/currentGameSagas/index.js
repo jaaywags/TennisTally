@@ -21,7 +21,6 @@ import {
 import {updateWatchScore} from '../../actions/WatchActions/WatchActions';
 
 function* incrementHomeTeam({payload}) {
-  console.log('test22');
   const updateWatch = payload?.updateWatch;
   const {
     currentGame: {homeTeamValue, visitorTeamValue},

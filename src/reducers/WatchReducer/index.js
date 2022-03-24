@@ -8,7 +8,6 @@ const initialState = {
 const watchReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_APPLE_WATCH_REACHABLE:
-      console.log('set reachable: ', action.payload);
       return {
         ...state,
         isAppleWatchReachable: action.payload.isReachable,
