@@ -1,6 +1,10 @@
 import {select, takeLatest} from 'redux-saga/effects';
 import {sendMessage} from 'react-native-watch-connectivity';
 import {UPDATE_WATCH_SCORE} from '../../actions/WatchActions';
+import {
+  DECREMENT_HOME_TEAM_GAME,
+  DECREMENT_VISITOR_TEAM_GAME,
+} from '../../actions/GameActions';
 import {RESET_EVERYTHING} from '../../actions/MatchActions';
 
 function* update() {
@@ -55,6 +59,9 @@ function* resetScore() {
 }
 
 export default function* watchSaga() {
-  yield takeLatest(UPDATE_WATCH_SCORE, update);
+  yield takeLatest(
+    [UPDATE_WATCH_SCORE, DECREMENT_HOME_TEAM_GAME, DECREMENT_VISITOR_TEAM_GAME],
+    update,
+  );
   yield takeLatest(RESET_EVERYTHING, resetScore);
 }
