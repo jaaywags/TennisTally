@@ -17,22 +17,17 @@ struct FilledButton: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration
       .label
-//    .foregroundColor(configuration.isPressed ? .white : .blue) //text color
-      .foregroundColor(.white) //text color
+      .foregroundColor(.white)
       .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-//      .margin(isHome ? .trailing : .leading, 0)
-      .background(isHome ? Color(red: 0 / 255, green: 109 / 255, blue: 199 / 255) : Color(red: 198 / 255, green: 57 / 255, blue: 57 / 255)) // background color
+      .background(isHome ?
+        Color(red: 0 / 255, green: 109 / 255, blue: 199 / 255) :
+        Color(red: 198 / 255, green: 57 / 255, blue: 57 / 255))
       .cornerRadius(4)
   }
 }
 
 struct ContentView: View {
-  func test() {
-    print("TEST")
-  }
   @ObservedObject var communicationHelper = CommunicationHelper()
-//  communicationHelper.setRedrawFunction(self.test)
-  
   
   var body: some View {
     ScrollView {
@@ -77,7 +72,7 @@ struct ContentView: View {
             alignment: .trailing
             )
             .font(.system(size: 12))
-          Text(" -  ")
+          Text(" - ")
             .font(.system(size: 12))
           Text(communicationHelper.score.visitorTeamCurrentGame).frame(
             minWidth: 0,
