@@ -28,6 +28,7 @@ import {
   VisitorSection,
   Label,
   CurrentGameSection,
+  MatchScoreLabelText,
 } from './styles';
 
 const CurrentGame = ({
@@ -51,8 +52,8 @@ const CurrentGame = ({
     <Wrapper>
       <MatchScoreContainer>
         <MatchScoreLabelContainer>
-          <Text>Home: </Text>
-          <Text>Visitor: </Text>
+          <MatchScoreLabelText>Home: </MatchScoreLabelText>
+          <MatchScoreLabelText>Visitor: </MatchScoreLabelText>
         </MatchScoreLabelContainer>
         <FlatList
           horizontal={true}
