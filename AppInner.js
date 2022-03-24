@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   SafeAreaView,
   useColorScheme,
@@ -32,20 +32,28 @@ const App = ({
   sets,
   fixSetCount,
 }) => {
+  // We need to setup a reference to sets for the watch listener callback.
+  // Without it, the callback will only use the original sets object. If sets
+  // changes, the callback will net get the updates. Using a ref fixes that.
+  const stateRef = useRef();
+  stateRef.currentSets = sets;
+
+  // See if the apple watch is reachable
   const reachable = useReachability();
   useEffect(() => {
     updateIsAppleWatchReachable({isReachable: reachable});
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reachable]);
+
+  // Listen for communication from the apple watch
   useEffect(() => {
     watchEvents.addListener('message', (messageFromWatch) => {
       if (messageFromWatch.score) {
         const score = JSON.parse(messageFromWatch.score);
         setCurrentGameScoreFromWatch(score);
         setGamesScoreFromWatch({home: score.homeTeamGames, visitor: score.visitorTeamGames});
-
-        const homeSetsSum = sets.filter(set => set.isHomeWinner).length;
-        const visitorSetsSum = sets.filter(set => !set.isHomeWinner).length;
+        const homeSetsSum = stateRef.currentSets.filter(set => set.isHomeWinner).length;
+        const visitorSetsSum = stateRef.currentSets.filter(set => !set.isHomeWinner).length;
         if (homeSetsSum !== score.homeTeamSets || visitorSetsSum !== score.visitorTeamSets) {
           let homeSets = [];
           for (let i = 0; i < score.homeTeamSets; i++) {
