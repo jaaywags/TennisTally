@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   useColorScheme,
   StyleSheet,
+  Platform,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -39,7 +40,8 @@ const App = ({
   stateRef.currentSets = sets;
 
   // See if the apple watch is reachable
-  const reachable = useReachability();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const reachable = Platform.OS === 'ios' ? useReachability() : false;
   useEffect(() => {
     updateIsAppleWatchReachable({isReachable: reachable});
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,6 +49,10 @@ const App = ({
 
   // Listen for communication from the apple watch
   useEffect(() => {
+    if (Platform.OS !== 'ios') {
+      return;
+    }
+
     watchEvents.addListener('message', (messageFromWatch) => {
       if (messageFromWatch.score) {
         const score = JSON.parse(messageFromWatch.score);
