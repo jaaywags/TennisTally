@@ -123,13 +123,21 @@ const mapStateToProps = state => ({
   visitorTeamGames: state.games.visitorTeam,
 });
 const mapDispatchToProps = dispatch => ({
-  homeTeamIncrement: () => dispatch(currentGameIncrementHomeTeam()),
-  homeTeamDecrement: () => dispatch(currentGameDecrementHomeTeam()),
-  visitorTeamIncrement: () => dispatch(currentGameIncrementVisitorTeam()),
-  visitorTeamDecrement: () => dispatch(currentGameDecrementVisitorTeam()),
-  homeTeamSetIncrement: () => dispatch(setIncrementHomeTeam()),
-  visitorTeamSetIncrement: () => dispatch(setIncrementVisitorTeam()),
-  homeTeamGameIncrement: () => dispatch(gameIncrementHomeTeam()),
-  visitorTeamGameIncrement: () => dispatch(gameIncrementVisitorTeam()),
+  homeTeamIncrement: () =>
+    dispatch(currentGameIncrementHomeTeam({updateWatch: true})),
+  homeTeamDecrement: () =>
+    dispatch(currentGameDecrementHomeTeam({updateWatch: true})),
+  visitorTeamIncrement: () =>
+    dispatch(currentGameIncrementVisitorTeam({updateWatch: true})),
+  visitorTeamDecrement: () =>
+    dispatch(currentGameDecrementVisitorTeam({updateWatch: true})),
+  homeTeamSetIncrement: () =>
+    dispatch(setIncrementHomeTeam({updateWatch: true})),
+  visitorTeamSetIncrement: () =>
+    dispatch(setIncrementVisitorTeam({updateWatch: true})),
+  homeTeamGameIncrement: () =>
+    dispatch(gameIncrementHomeTeam({updateWatch: true})),
+  visitorTeamGameIncrement: () =>
+    dispatch(gameIncrementVisitorTeam({updateWatch: true})),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentGame);

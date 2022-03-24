@@ -5,9 +5,11 @@ import {
 } from '../../actions/SetActions';
 import {completeSet} from '../../actions/SetActions/SetActions';
 import {resetGames} from '../../actions/GameActions/GameActions';
+import {updateWatchScore} from '../../actions/WatchActions/WatchActions';
 
 function* incrementSet({payload}) {
   const {isHomeWinner} = payload;
+  const updateWatch = payload?.updateWatch;
   const {
     games: {homeTeam, visitorTeam},
   } = yield select();
@@ -19,6 +21,9 @@ function* incrementSet({payload}) {
     }),
   );
   yield putResolve(resetGames());
+  if (updateWatch) {
+    yield putResolve(updateWatchScore());
+  }
 }
 
 export default function* setSaga() {
