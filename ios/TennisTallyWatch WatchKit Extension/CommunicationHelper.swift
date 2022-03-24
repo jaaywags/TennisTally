@@ -2,8 +2,6 @@ import WatchKit
 import WatchConnectivity
 import Foundation
 
-//let sharedCommunicationHelper = CommunicationHelper()
-
 struct Score: Codable {
   var homeTeamCurrentGame: String = "LOVE"
   var visitorTeamCurrentGame: String = "LOVE"
