@@ -29,6 +29,7 @@ import {
   ModifyMatchScoreLabelContainer,
   ModifyMatchScoreLabel,
   ModifyMatchScoreText,
+  ModifyScoreExtraCellText,
   Center,
   ModifyScoreCell,
   ModifyScoreExtraCell,
@@ -77,7 +78,9 @@ const MatchSettings = ({
                         onPress={() => increaseSetForHomeTeam(index)}>
                         <FontAwesomeIcon icon={faAngleUp} size={32} />
                       </TouchableOpacity>
-                      <ModifyMatchScoreText>{item.home}</ModifyMatchScoreText>
+                      <ModifyMatchScoreText odd={(index + 1) % 2 === 0}>
+                        {item.home}
+                      </ModifyMatchScoreText>
                       <TouchableOpacity
                         onPress={() => decreaseSetForHomeTeam(index)}>
                         <FontAwesomeIcon icon={faAngleDown} size={32} />
@@ -88,7 +91,7 @@ const MatchSettings = ({
                         onPress={() => increaseSetForVisitorTeam(index)}>
                         <FontAwesomeIcon icon={faAngleUp} size={32} />
                       </TouchableOpacity>
-                      <ModifyMatchScoreText>
+                      <ModifyMatchScoreText odd={(index + 1) % 2 === 0}>
                         {item.visitor}
                       </ModifyMatchScoreText>
                       <TouchableOpacity
@@ -96,8 +99,10 @@ const MatchSettings = ({
                         <FontAwesomeIcon icon={faAngleDown} size={32} />
                       </TouchableOpacity>
                     </ModifyScoreCell>
-                    <ModifyScoreExtraCell odd={(index + 1) % 2 === 0}>
-                      <Text>{index + 1}</Text>
+                    <ModifyScoreExtraCell>
+                      <ModifyScoreExtraCellText>
+                        {index + 1}
+                      </ModifyScoreExtraCellText>
                     </ModifyScoreExtraCell>
                   </Center>
                 );
@@ -138,17 +143,21 @@ const mapStateToProps = state => ({
   visitorTeam: state.games.visitorTeam,
 });
 const mapDispatchToProps = dispatch => ({
-  homeTeamGameIncrement: () => dispatch(gameIncrementHomeTeam()),
-  visitorTeamGameIncrement: () => dispatch(gameIncrementVisitorTeam()),
-  homeTeamGameDecrement: () => dispatch(gameDecrementHomeTeam()),
-  visitorTeamGameDecrement: () => dispatch(gameDecrementVisitorTeam()),
+  homeTeamGameIncrement: () =>
+    dispatch(gameIncrementHomeTeam({updateWatch: true})),
+  visitorTeamGameIncrement: () =>
+    dispatch(gameIncrementVisitorTeam({updateWatch: true})),
+  homeTeamGameDecrement: () =>
+    dispatch(gameDecrementHomeTeam({updateWatch: true})),
+  visitorTeamGameDecrement: () =>
+    dispatch(gameDecrementVisitorTeam({updateWatch: true})),
   decreaseSetForHomeTeam: index =>
-    dispatch(decreaseSpecificSetForHomeTeam({index})),
+    dispatch(decreaseSpecificSetForHomeTeam({index, updateWatch: true})),
   increaseSetForHomeTeam: index =>
-    dispatch(increaseSpecificSetForHomeTeam({index})),
+    dispatch(increaseSpecificSetForHomeTeam({index, updateWatch: true})),
   decreaseSetForVisitorTeam: index =>
-    dispatch(decreaseSpecificSetForVisitorTeam({index})),
+    dispatch(decreaseSpecificSetForVisitorTeam({index, updateWatch: true})),
   increaseSetForVisitorTeam: index =>
-    dispatch(increaseSpecificSetForVisitorTeam({index})),
+    dispatch(increaseSpecificSetForVisitorTeam({index, updateWatch: true})),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MatchSettings);

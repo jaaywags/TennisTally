@@ -8,6 +8,7 @@ import {
   CURRENT_GAME_DECREMENT_HOME,
   CURRENT_GAME_INCREMENT_VISITOR,
   CURRENT_GAME_DECREMENT_VISITOR,
+  SET_CURRENT_GAME_SCORE_FROM_WATCH,
 } from '../../actions/CurrentGameActions';
 import {
   INCREMENT_HOME_TEAM_SET,
@@ -17,8 +18,10 @@ import {
   INCREMENT_HOME_TEAM_GAME,
   INCREMENT_VISITOR_TEAM_GAME,
 } from '../../actions/GameActions';
+import {updateWatchScore} from '../../actions/WatchActions/WatchActions';
 
-function* incrementHomeTeam() {
+function* incrementHomeTeam({payload}) {
+  const updateWatch = payload?.updateWatch;
   const {
     currentGame: {homeTeamValue, visitorTeamValue},
   } = yield select();
@@ -29,6 +32,9 @@ function* incrementHomeTeam() {
         friendly: '15',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -39,6 +45,9 @@ function* incrementHomeTeam() {
         friendly: '30',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -49,6 +58,9 @@ function* incrementHomeTeam() {
         friendly: '40',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -65,6 +77,9 @@ function* incrementHomeTeam() {
         friendly: 'DUCE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -85,6 +100,9 @@ function* incrementHomeTeam() {
         friendly: '',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -101,11 +119,15 @@ function* incrementHomeTeam() {
         friendly: 'DUCE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 }
 
-function* incrementVisitorTeam() {
+function* incrementVisitorTeam({payload}) {
+  const updateWatch = payload?.updateWatch;
   const {
     currentGame: {homeTeamValue, visitorTeamValue},
   } = yield select();
@@ -117,6 +139,9 @@ function* incrementVisitorTeam() {
         friendly: '15',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -127,6 +152,9 @@ function* incrementVisitorTeam() {
         friendly: '30',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -137,6 +165,9 @@ function* incrementVisitorTeam() {
         friendly: '40',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -153,6 +184,9 @@ function* incrementVisitorTeam() {
         friendly: 'DUCE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -173,6 +207,9 @@ function* incrementVisitorTeam() {
         friendly: 'ADD',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -189,11 +226,15 @@ function* incrementVisitorTeam() {
         friendly: 'DUCE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 }
 
-function* decrementHomeTeam() {
+function* decrementHomeTeam({payload}) {
+  const updateWatch = payload?.updateWatch;
   const {
     currentGame: {homeTeamValue, visitorTeamValue},
   } = yield select();
@@ -209,6 +250,9 @@ function* decrementHomeTeam() {
         friendly: 'LOVE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -219,6 +263,9 @@ function* decrementHomeTeam() {
         friendly: '15',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -229,6 +276,9 @@ function* decrementHomeTeam() {
         friendly: '30',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -245,6 +295,9 @@ function* decrementHomeTeam() {
         friendly: '40',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -261,10 +314,14 @@ function* decrementHomeTeam() {
         friendly: 'DUCE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
   }
 }
 
-function* decrementVisitorTeam() {
+function* decrementVisitorTeam({payload}) {
+  const updateWatch = payload?.updateWatch;
   const {
     currentGame: {homeTeamValue, visitorTeamValue},
   } = yield select();
@@ -280,6 +337,9 @@ function* decrementVisitorTeam() {
         friendly: 'LOVE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -290,6 +350,9 @@ function* decrementVisitorTeam() {
         friendly: '15',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -300,6 +363,9 @@ function* decrementVisitorTeam() {
         friendly: '30',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -316,6 +382,9 @@ function* decrementVisitorTeam() {
         friendly: '40',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 
@@ -332,11 +401,15 @@ function* decrementVisitorTeam() {
         friendly: 'DUCE',
       }),
     );
+    if (updateWatch) {
+      yield putResolve(updateWatchScore());
+    }
     return;
   }
 }
 
-function* resetScore() {
+function* resetScore({payload}) {
+  const updateWatch = payload?.updateWatch;
   yield putResolve(
     setVisitorTeamScore({
       score: 0,
@@ -349,6 +422,142 @@ function* resetScore() {
       friendly: 'LOVE',
     }),
   );
+
+  if (updateWatch) {
+    yield putResolve(updateWatchScore());
+  }
+}
+
+function* setCurrentGameScoreFromWatch({payload}) {
+  const {homeTeamCurrentGame, visitorTeamCurrentGame} = payload;
+
+  // handle home team
+  if (homeTeamCurrentGame === 'LOVE') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 0,
+        friendly: 'LOVE',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '15') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 15,
+        friendly: '15',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '30') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 30,
+        friendly: '30',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '40') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 40,
+        friendly: '40',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === 'DUCE') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 40,
+        friendly: 'DUCE',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === 'ADD') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 41,
+        friendly: 'ADD',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 40,
+        friendly: '',
+      }),
+    );
+  }
+
+  // handle visitor team
+  if (visitorTeamCurrentGame === 'LOVE') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 0,
+        friendly: 'LOVE',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '15') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 15,
+        friendly: '15',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '30') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 30,
+        friendly: '30',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '40') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 40,
+        friendly: '40',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === 'DUCE') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 40,
+        friendly: 'DUCE',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === 'ADD') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 41,
+        friendly: 'ADD',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 40,
+        friendly: '',
+      }),
+    );
+  }
 }
 
 export default function* currentGameSaga() {
@@ -364,5 +573,9 @@ export default function* currentGameSaga() {
       INCREMENT_VISITOR_TEAM_GAME,
     ],
     resetScore,
+  );
+  yield takeLatest(
+    SET_CURRENT_GAME_SCORE_FROM_WATCH,
+    setCurrentGameScoreFromWatch,
   );
 }

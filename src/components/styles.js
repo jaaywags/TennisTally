@@ -27,11 +27,15 @@ export const MatchScoreContainer = styled.View`
 export const MatchScoreText = styled.Text`
   margin-left: 5px;
   font-weight: ${({bold}) => (bold ? 600 : 100)};
+  color: #a3a3a3;
 `;
 
 export const MatchScoreLabelContainer = styled.View`
   background-color: #dedede;
-  ${'' /* padding: 10px; */}
+`;
+
+export const MatchScoreLabelText = styled.Text`
+  color: #a3a3a3;
 `;
 
 export const ModifyMatchScoreContainer = styled.View`
@@ -48,10 +52,12 @@ export const ModifyMatchScoreLabelContainer = styled.View`
 
 export const ModifyMatchScoreLabel = styled.Text`
   font-size: 26px;
+  color: #a3a3a3;
 `;
 
 export const ModifyMatchScoreText = styled.Text`
   font-size-: 26px;
+  color: ${({odd}) => (odd ? '#a3a3a3' : '#ffffff')};
 `;
 
 export const ModifyScoreCell = styled.View`
@@ -67,6 +73,10 @@ export const ModifyScoreExtraCell = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
+`;
+
+export const ModifyScoreExtraCellText = styled.Text`
+  color: #a3a3a3;
 `;
 
 export const SetSection = styled.View`
@@ -147,6 +157,10 @@ export const ScoreText = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const ScoreTextValue = styled.Text`
+  color: black;
 `;
 
 export const HomeWinnerButton = styled.TouchableOpacity`

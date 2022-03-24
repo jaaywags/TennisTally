@@ -1,8 +1,15 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons';
-import {Row, LabelSmall, MinusButton, PlusButton, ScoreText} from '../styles';
+import {
+  Row,
+  LabelSmall,
+  MinusButton,
+  PlusButton,
+  ScoreText,
+  ScoreTextValue,
+} from '../styles';
 
 export default ({minusBtnCallback, plusBtnCallback, label, value}) => (
   <>
@@ -14,7 +21,7 @@ export default ({minusBtnCallback, plusBtnCallback, label, value}) => (
         <FontAwesomeIcon icon={faMinus} size={26} />
       </MinusButton>
       <ScoreText>
-        <Text>{value}</Text>
+        <ScoreTextValue>{value}</ScoreTextValue>
       </ScoreText>
       <PlusButton onPress={plusBtnCallback}>
         <FontAwesomeIcon icon={faPlus} size={26} />

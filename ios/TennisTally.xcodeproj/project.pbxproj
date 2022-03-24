@@ -13,6 +13,15 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		58DC45182AE2FE673AACC9FC /* libPods-TennisTally.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C340AC208E06F93249AE18D3 /* libPods-TennisTally.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AD76744B27E679E60062D345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD76744A27E679E60062D345 /* Assets.xcassets */; };
+		AD76745127E679E70062D345 /* TennisTallyWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AD76745027E679E70062D345 /* TennisTallyWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD76745627E679E70062D345 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76745527E679E70062D345 /* ContentView.swift */; };
+		AD76745827E679E70062D345 /* TennisTallyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76745727E679E70062D345 /* TennisTallyApp.swift */; };
+		AD76745A27E679E70062D345 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76745927E679E70062D345 /* ComplicationController.swift */; };
+		AD76745C27E679E90062D345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD76745B27E679E90062D345 /* Assets.xcassets */; };
+		AD76745F27E679E90062D345 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD76745E27E679E90062D345 /* Preview Assets.xcassets */; };
+		AD76746327E679E90062D345 /* TennisTallyWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AD76744827E679E20062D345 /* TennisTallyWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD76747027E7B9410062D345 /* CommunicationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD76746F27E7B9410062D345 /* CommunicationHelper.swift */; };
 		EDFD70F0D4A67456DFC952C7 /* libPods-TennisTally-TennisTallyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AB64574D77AFCCD5BFEDF6 /* libPods-TennisTally-TennisTallyTests.a */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +33,46 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = TennisTally;
 		};
+		AD76745227E679E70062D345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD76744F27E679E70062D345;
+			remoteInfo = "TennisTallyWatch WatchKit Extension";
+		};
+		AD76746127E679E90062D345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD76744727E679E20062D345;
+			remoteInfo = TennisTallyWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AD76746427E679E90062D345 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AD76746327E679E90062D345 /* TennisTallyWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD76746727E679E90062D345 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AD76745127E679E70062D345 /* TennisTallyWatch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* TennisTallyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TennisTallyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +90,17 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TennisTally/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92AF790321AB7540656AFDC9 /* Pods-TennisTally-TennisTallyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisTally-TennisTallyTests.release.xcconfig"; path = "Target Support Files/Pods-TennisTally-TennisTallyTests/Pods-TennisTally-TennisTallyTests.release.xcconfig"; sourceTree = "<group>"; };
 		9A8C05631E8DC0066E3350CB /* Pods-TennisTally-TennisTallyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisTally-TennisTallyTests.debug.xcconfig"; path = "Target Support Files/Pods-TennisTally-TennisTallyTests/Pods-TennisTally-TennisTallyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD76744827E679E20062D345 /* TennisTallyWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisTallyWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD76744A27E679E60062D345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD76745027E679E70062D345 /* TennisTallyWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TennisTallyWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD76745527E679E70062D345 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AD76745727E679E70062D345 /* TennisTallyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisTallyApp.swift; sourceTree = "<group>"; };
+		AD76745927E679E70062D345 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		AD76745B27E679E90062D345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD76745E27E679E90062D345 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AD76746027E679E90062D345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD76746F27E7B9410062D345 /* CommunicationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationHelper.swift; sourceTree = "<group>"; };
+		AD76748027E99A270062D345 /* TennisTallyWatch WatchKit Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TennisTallyWatch WatchKit Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		C340AC208E06F93249AE18D3 /* libPods-TennisTally.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TennisTally.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -60,6 +119,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				58DC45182AE2FE673AACC9FC /* libPods-TennisTally.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		336D54E7E2AC1379E0EF8622 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD76744D27E679E70062D345 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +192,8 @@
 				13B07FAE1A68108700A75B9A /* TennisTally */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TennisTallyTests */,
+				AD76744927E679E20062D345 /* TennisTallyWatch */,
+				AD76745427E679E70062D345 /* TennisTallyWatch WatchKit Extension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C1AF82ADD6DE4DD008460C26 /* Pods */,
@@ -133,8 +208,41 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* TennisTally.app */,
 				00E356EE1AD99517003FC87E /* TennisTallyTests.xctest */,
+				AD76744827E679E20062D345 /* TennisTallyWatch.app */,
+				AD76745027E679E70062D345 /* TennisTallyWatch WatchKit Extension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AD76744927E679E20062D345 /* TennisTallyWatch */ = {
+			isa = PBXGroup;
+			children = (
+				AD76744A27E679E60062D345 /* Assets.xcassets */,
+			);
+			path = TennisTallyWatch;
+			sourceTree = "<group>";
+		};
+		AD76745427E679E70062D345 /* TennisTallyWatch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AD76748027E99A270062D345 /* TennisTallyWatch WatchKit Extension-Bridging-Header.h */,
+				AD76746F27E7B9410062D345 /* CommunicationHelper.swift */,
+				AD76745527E679E70062D345 /* ContentView.swift */,
+				AD76745727E679E70062D345 /* TennisTallyApp.swift */,
+				AD76745927E679E70062D345 /* ComplicationController.swift */,
+				AD76745B27E679E90062D345 /* Assets.xcassets */,
+				AD76746027E679E90062D345 /* Info.plist */,
+				AD76745D27E679E90062D345 /* Preview Content */,
+			);
+			path = "TennisTallyWatch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		AD76745D27E679E90062D345 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AD76745E27E679E90062D345 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		C1AF82ADD6DE4DD008460C26 /* Pods */ = {
@@ -184,15 +292,52 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				095977D741C71BCFBAC1B8AE /* [CP] Embed Pods Frameworks */,
 				91B9FFA0E1E9C64D4FFF15C1 /* [CP] Copy Pods Resources */,
+				AD76746427E679E90062D345 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AD76746227E679E90062D345 /* PBXTargetDependency */,
 			);
 			name = TennisTally;
 			productName = TennisTally;
 			productReference = 13B07F961A680F5B00A75B9A /* TennisTally.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AD76744727E679E20062D345 /* TennisTallyWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD76746B27E679E90062D345 /* Build configuration list for PBXNativeTarget "TennisTallyWatch" */;
+			buildPhases = (
+				AD76744627E679E20062D345 /* Resources */,
+				AD76746727E679E90062D345 /* Embed App Extensions */,
+				336D54E7E2AC1379E0EF8622 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD76745327E679E70062D345 /* PBXTargetDependency */,
+			);
+			name = TennisTallyWatch;
+			productName = TennisTallyWatch;
+			productReference = AD76744827E679E20062D345 /* TennisTallyWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AD76744F27E679E70062D345 /* TennisTallyWatch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD76746A27E679E90062D345 /* Build configuration list for PBXNativeTarget "TennisTallyWatch WatchKit Extension" */;
+			buildPhases = (
+				AD76744C27E679E70062D345 /* Sources */,
+				AD76744D27E679E70062D345 /* Frameworks */,
+				AD76744E27E679E70062D345 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TennisTallyWatch WatchKit Extension";
+			productName = "TennisTallyWatch WatchKit Extension";
+			productReference = AD76745027E679E70062D345 /* TennisTallyWatch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -200,7 +345,8 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -208,6 +354,13 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
+					};
+					AD76744727E679E20062D345 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					AD76744F27E679E70062D345 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -226,6 +379,8 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* TennisTally */,
 				00E356ED1AD99517003FC87E /* TennisTallyTests */,
+				AD76744727E679E20062D345 /* TennisTallyWatch */,
+				AD76744F27E679E70062D345 /* TennisTallyWatch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +399,23 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD76744627E679E20062D345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD76744B27E679E60062D345 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD76744E27E679E70062D345 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD76745F27E679E90062D345 /* Preview Assets.xcassets in Resources */,
+				AD76745C27E679E90062D345 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +587,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD76744C27E679E70062D345 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD76745627E679E70062D345 /* ContentView.swift in Sources */,
+				AD76747027E7B9410062D345 /* CommunicationHelper.swift in Sources */,
+				AD76745827E679E70062D345 /* TennisTallyApp.swift in Sources */,
+				AD76745A27E679E70062D345 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -423,6 +606,16 @@
 			target = 13B07F861A680F5B00A75B9A /* TennisTally */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
+		AD76745327E679E70062D345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD76744F27E679E70062D345 /* TennisTallyWatch WatchKit Extension */;
+			targetProxy = AD76745227E679E70062D345 /* PBXContainerItemProxy */;
+		};
+		AD76746227E679E90062D345 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD76744727E679E20062D345 /* TennisTallyWatch */;
+			targetProxy = AD76746127E679E90062D345 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -430,13 +623,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A8C05631E8DC0066E3350CB /* Pods-TennisTally-TennisTallyTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = TennisTallyTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,10 +651,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92AF790321AB7540656AFDC9 /* Pods-TennisTally-TennisTallyTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = TennisTallyTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,7 +778,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -641,7 +836,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -653,7 +848,174 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD76746527E679E90062D345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SLT8SJ897V;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = TennisTallyWatch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = TennisTallyWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.TennisTally.TennisTally;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TennisTally.TennisTally.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		AD76746627E679E90062D345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SLT8SJ897V;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = TennisTallyWatch_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = TennisTallyWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.TennisTally.TennisTally;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TennisTally.TennisTally.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		AD76746827E679E90062D345 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"TennisTallyWatch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = SLT8SJ897V;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TennisTallyWatch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TennisTallyWatch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TennisTally.TennisTally.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TennisTallyWatch WatchKit Extension/TennisTallyWatch WatchKit Extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		AD76746927E679E90062D345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"TennisTallyWatch WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = SLT8SJ897V;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TennisTallyWatch WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "TennisTallyWatch WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TennisTally.TennisTally.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TennisTallyWatch WatchKit Extension/TennisTallyWatch WatchKit Extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
 			};
 			name = Release;
 		};
@@ -683,6 +1045,24 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD76746A27E679E90062D345 /* Build configuration list for PBXNativeTarget "TennisTallyWatch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD76746827E679E90062D345 /* Debug */,
+				AD76746927E679E90062D345 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD76746B27E679E90062D345 /* Build configuration list for PBXNativeTarget "TennisTallyWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD76746527E679E90062D345 /* Debug */,
+				AD76746627E679E90062D345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

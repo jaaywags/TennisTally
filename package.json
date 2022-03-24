@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "start:reset": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -18,6 +19,7 @@
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
+    "fbjs": "^3.0.4",
     "react": "17.0.2",
     "react-native": "0.67.3",
     "react-native-gesture-handler": "^2.3.2",
@@ -27,6 +29,7 @@
     "react-native-screens": "^3.13.1",
     "react-native-svg": "^12.3.0",
     "react-native-uuid": "^2.0.1",
+    "react-native-watch-connectivity": "^1.0.4",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-actions": "^2.6.5",

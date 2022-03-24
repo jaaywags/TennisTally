@@ -1,15 +1,19 @@
-import 'react-native-gesture-handler';
+/* eslint-disable prettier/prettier */
 import React from 'react';
-import {SafeAreaView, useColorScheme, StyleSheet} from 'react-native';
+import 'react-native-gesture-handler';
+import {
+  SafeAreaView,
+  useColorScheme,
+  StyleSheet,
+} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './src/store/store';
-import NavBar from './src/components/NavBar';
+import AppInner from './AppInner';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -18,7 +22,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <SafeAreaView style={[backgroundStyle, styles.safeAreaView]}>
-          <NavBar />
+          <AppInner />
         </SafeAreaView>
       </PersistGate>
     </Provider>

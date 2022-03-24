@@ -1,9 +1,10 @@
 import {
   COMPLETE_SET,
-  DECREASE_SPECIFIC_SET_FOR_HOME_TEAM,
-  INCREASE_SPECIFIC_SET_FOR_HOME_TEAM,
-  DECREASE_SPECIFIC_SET_FOR_VISITOR_TEAM,
-  INCREASE_SPECIFIC_SET_FOR_VISITOR_TEAM,
+  DECREASE_SPECIFIC_SET_FOR_HOME_TEAM_COMPLETE,
+  INCREASE_SPECIFIC_SET_FOR_HOME_TEAM_COMPLETE,
+  DECREASE_SPECIFIC_SET_FOR_VISITOR_TEAM_COMPLETE,
+  INCREASE_SPECIFIC_SET_FOR_VISITOR_TEAM_COMPLETE,
+  FIX_SET_COUNT_FROM_WATCH,
 } from '../../actions/SetActions';
 import {RESET_EVERYTHING} from '../../actions/MatchActions';
 const initialState = {
@@ -17,7 +18,7 @@ const setReducer = (state = initialState, action) => {
         ...state,
         sets: [...state.sets, action.payload],
       };
-    case INCREASE_SPECIFIC_SET_FOR_HOME_TEAM: {
+    case INCREASE_SPECIFIC_SET_FOR_HOME_TEAM_COMPLETE: {
       const newSets = [...state.sets];
       const setToModify = {...newSets[action.payload.index]};
       newSets[action.payload.index] = {
@@ -30,7 +31,7 @@ const setReducer = (state = initialState, action) => {
         sets: newSets,
       };
     }
-    case DECREASE_SPECIFIC_SET_FOR_HOME_TEAM: {
+    case DECREASE_SPECIFIC_SET_FOR_HOME_TEAM_COMPLETE: {
       const newSets = [...state.sets];
       const setToModify = {...newSets[action.payload.index]};
       newSets[action.payload.index] = {
@@ -43,7 +44,7 @@ const setReducer = (state = initialState, action) => {
         sets: newSets,
       };
     }
-    case INCREASE_SPECIFIC_SET_FOR_VISITOR_TEAM: {
+    case INCREASE_SPECIFIC_SET_FOR_VISITOR_TEAM_COMPLETE: {
       const newSets = [...state.sets];
       const setToModify = {...newSets[action.payload.index]};
       newSets[action.payload.index] = {
@@ -56,7 +57,7 @@ const setReducer = (state = initialState, action) => {
         sets: newSets,
       };
     }
-    case DECREASE_SPECIFIC_SET_FOR_VISITOR_TEAM: {
+    case DECREASE_SPECIFIC_SET_FOR_VISITOR_TEAM_COMPLETE: {
       const newSets = [...state.sets];
       const setToModify = {...newSets[action.payload.index]};
       newSets[action.payload.index] = {
@@ -71,6 +72,12 @@ const setReducer = (state = initialState, action) => {
     }
     case RESET_EVERYTHING:
       return initialState;
+    case FIX_SET_COUNT_FROM_WATCH: {
+      return {
+        ...state,
+        sets: action.payload.sets,
+      };
+    }
     default:
       return state;
   }
