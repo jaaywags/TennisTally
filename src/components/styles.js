@@ -149,6 +149,10 @@ export const ScoreText = styled.View`
   justify-content: center;
 `;
 
+export const ScoreTextValue = styled.Text`
+  color: black;
+`;
+
 export const HomeWinnerButton = styled.TouchableOpacity`
   width: 100px;
   padding: 10px;
