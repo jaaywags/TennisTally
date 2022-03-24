@@ -4,6 +4,7 @@ import {
   DECREMENT_HOME_TEAM_GAME,
   DECREMENT_VISITOR_TEAM_GAME,
   RESET_GAMES,
+  SET_GAMES_FROM_WATCH,
 } from '../../actions/GameActions';
 import {RESET_EVERYTHING} from '../../actions/MatchActions';
 const initialState = {
@@ -37,6 +38,12 @@ const gameReducer = (state = initialState, action) => {
     case RESET_EVERYTHING:
     case RESET_GAMES:
       return initialState;
+    case SET_GAMES_FROM_WATCH:
+      return {
+        ...state,
+        homeTeam: action.payload.home,
+        visitorTeam: action.payload.visitor,
+      };
     default:
       return state;
   }

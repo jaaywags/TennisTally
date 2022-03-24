@@ -13,27 +13,24 @@ import {
 } from 'react-native-watch-connectivity';
 import NavBar from './src/components/NavBar';
 import {
-  currentGameIncrementHomeTeam,
-  currentGameIncrementVisitorTeam,
+  updateCurrentGameFromWatch,
 } from './src/actions/CurrentGameActions/CurrentGameActions';
 import {
-  gameIncrementHomeTeam,
-  gameIncrementVisitorTeam,
+  setGamesFromWatch,
 } from './src/actions/GameActions/GameActions';
 import {
-  setIncrementHomeTeam,
-  setIncrementVisitorTeam,
+  completeSet,
+  fixSetCountFromWatch,
 } from './src/actions/SetActions/SetActions';
 import {updateAppleWatchReachable} from './src/actions/WatchActions/WatchActions';
 
 const App = ({
-  homeTeamIncrement,
-  visitorTeamIncrement,
-  homeTeamSetIncrement,
-  visitorTeamSetIncrement,
-  homeTeamGameIncrement,
-  visitorTeamGameIncrement,
   updateIsAppleWatchReachable,
+  setCurrentGameScoreFromWatch,
+  setGamesScoreFromWatch,
+  setSetScoreFromWatch,
+  sets,
+  fixSetCount,
 }) => {
   const reachable = useReachability();
   useEffect(() => {
@@ -42,38 +39,36 @@ const App = ({
   }, [reachable]);
   useEffect(() => {
     watchEvents.addListener('message', (messageFromWatch) => {
-      console.log('messageFromWatch: ', messageFromWatch);
-      switch (messageFromWatch.text) {
-        case 'INCREASE_HOME_CURRENT_GAME': {
-          console.log('test1');
-          homeTeamIncrement();
-          return;
+      if (messageFromWatch.score) {
+        const score = JSON.parse(messageFromWatch.score);
+        setCurrentGameScoreFromWatch(score);
+        setGamesScoreFromWatch({home: score.homeTeamGames, visitor: score.visitorTeamGames});
+
+        const homeSetsSum = sets.filter(set => set.isHomeWinner).length;
+        const visitorSetsSum = sets.filter(set => !set.isHomeWinner).length;
+        if (homeSetsSum !== score.homeTeamSets || visitorSetsSum !== score.visitorTeamSets) {
+          let homeSets = [];
+          for (let i = 0; i < score.homeTeamSets; i++) {
+            homeSets.push({isHomeWinner: true, home: 0, visitor: 0});
+          }
+
+          let visitorSets = [];
+          for (let i = 0; i < score.visitorTeamSets; i++) {
+            visitorSets.push({isHomeWinner: false, home: 0, visitor: 0});
+          }
+
+          fixSetCount({sets: [...homeSets, ...visitorSets]});
         }
-        case 'INCREASE_VISITOR_CURRENT_GAME': {
-          console.log('test2');
-          visitorTeamIncrement();
-          return;
-        }
-        case 'INCREASE_HOME_GAME': {
-          console.log('test3');
-          homeTeamGameIncrement();
-          return;
-        }
-        case 'INCREASE_VISITOR_GAME': {
-          console.log('test4');
-          visitorTeamGameIncrement();
-          return;
-        }
-        case 'INCREASE_HOME_SET': {
-          console.log('test5');
-          homeTeamSetIncrement();
-          return;
-        }
-        case 'INCREASE_VISITOR_SET': {
-          console.log('test6');
-          visitorTeamSetIncrement();
-          return;
-        }
+      }
+
+      if (messageFromWatch.completeSet) {
+        const set = JSON.parse(messageFromWatch.completeSet);
+        setSetScoreFromWatch({
+          home: set.home,
+          visitor: set.visitor,
+          isHomeWinner: set.isHomeWinner,
+        });
+        setGamesScoreFromWatch({home: 0, visitor: 0});
       }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,14 +95,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  sets: state.sets.sets,
+});
 const mapDispatchToProps = dispatch => ({
-  homeTeamIncrement: () => dispatch(currentGameIncrementHomeTeam()),
-  visitorTeamIncrement: () => dispatch(currentGameIncrementVisitorTeam()),
-  homeTeamSetIncrement: () => dispatch(setIncrementHomeTeam()),
-  visitorTeamSetIncrement: () => dispatch(setIncrementVisitorTeam()),
-  homeTeamGameIncrement: () => dispatch(gameIncrementHomeTeam()),
-  visitorTeamGameIncrement: () => dispatch(gameIncrementVisitorTeam()),
   updateIsAppleWatchReachable: ({isReachable}) => dispatch(updateAppleWatchReachable({isReachable})),
+  setCurrentGameScoreFromWatch: (payload) => dispatch(updateCurrentGameFromWatch(payload)),
+  setGamesScoreFromWatch: (payload) => dispatch(setGamesFromWatch(payload)),
+  setSetScoreFromWatch: (payload) => dispatch(completeSet(payload)),
+  fixSetCount: (payload) => dispatch(fixSetCountFromWatch(payload)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

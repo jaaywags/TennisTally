@@ -132,9 +132,9 @@ const mapDispatchToProps = dispatch => ({
   visitorTeamDecrement: () =>
     dispatch(currentGameDecrementVisitorTeam({updateWatch: true})),
   homeTeamSetIncrement: () =>
-    dispatch(setIncrementHomeTeam({updateWatch: true})),
+    dispatch(setIncrementHomeTeam({updateWatch: true, isHomeWinner: true})),
   visitorTeamSetIncrement: () =>
-    dispatch(setIncrementVisitorTeam({updateWatch: true})),
+    dispatch(setIncrementVisitorTeam({updateWatch: true, isHomeWinner: false})),
   homeTeamGameIncrement: () =>
     dispatch(gameIncrementHomeTeam({updateWatch: true})),
   visitorTeamGameIncrement: () =>

@@ -8,6 +8,7 @@ import {
   CURRENT_GAME_DECREMENT_HOME,
   CURRENT_GAME_INCREMENT_VISITOR,
   CURRENT_GAME_DECREMENT_VISITOR,
+  SET_CURRENT_GAME_SCORE_FROM_WATCH,
 } from '../../actions/CurrentGameActions';
 import {
   INCREMENT_HOME_TEAM_SET,
@@ -422,8 +423,141 @@ function* resetScore({payload}) {
       friendly: 'LOVE',
     }),
   );
+
   if (updateWatch) {
     yield putResolve(updateWatchScore());
+  }
+}
+
+function* setCurrentGameScoreFromWatch({payload}) {
+  const {homeTeamCurrentGame, visitorTeamCurrentGame} = payload;
+
+  // handle home team
+  if (homeTeamCurrentGame === 'LOVE') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 0,
+        friendly: 'LOVE',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '15') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 15,
+        friendly: '15',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '30') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 30,
+        friendly: '30',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '40') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 40,
+        friendly: '40',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === 'DUCE') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 40,
+        friendly: 'DUCE',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === 'ADD') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 41,
+        friendly: 'ADD',
+      }),
+    );
+  }
+
+  if (homeTeamCurrentGame === '') {
+    yield putResolve(
+      setHomeTeamScore({
+        score: 40,
+        friendly: '',
+      }),
+    );
+  }
+
+  // handle visitor team
+  if (visitorTeamCurrentGame === 'LOVE') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 0,
+        friendly: 'LOVE',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '15') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 15,
+        friendly: '15',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '30') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 30,
+        friendly: '30',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '40') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 40,
+        friendly: '40',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === 'DUCE') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 40,
+        friendly: 'DUCE',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === 'ADD') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 41,
+        friendly: 'ADD',
+      }),
+    );
+  }
+
+  if (visitorTeamCurrentGame === '') {
+    yield putResolve(
+      setVisitorTeamScore({
+        score: 40,
+        friendly: '',
+      }),
+    );
   }
 }
 
@@ -440,5 +574,9 @@ export default function* currentGameSaga() {
       INCREMENT_VISITOR_TEAM_GAME,
     ],
     resetScore,
+  );
+  yield takeLatest(
+    SET_CURRENT_GAME_SCORE_FROM_WATCH,
+    setCurrentGameScoreFromWatch,
   );
 }

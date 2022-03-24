@@ -4,13 +4,19 @@ import Foundation
 
 //let sharedCommunicationHelper = CommunicationHelper()
 
-struct Score: Decodable {
+struct Score: Codable {
   var homeTeamCurrentGame: String = "LOVE"
   var visitorTeamCurrentGame: String = "LOVE"
   var homeTeamGames: Int = 0
   var visitorTeamGames: Int = 0
   var homeTeamSets: Int = 0
   var visitorTeamSets: Int = 0
+}
+
+struct CloseSet: Codable {
+  var isHomeWinner: Bool = true
+  var home: Int = 0
+  var visitor: Int = 0
 }
 
 class CommunicationHelper: NSObject, ObservableObject, WCSessionDelegate {
@@ -47,6 +53,40 @@ class CommunicationHelper: NSObject, ObservableObject, WCSessionDelegate {
     }
   }
   
+  func sendScoreToPhone() {
+    do {
+      let jsonData = try JSONEncoder().encode(self.score)
+      let jsonString = String(data: jsonData, encoding: .utf8)
+      self.session.sendMessage(["score": jsonString], replyHandler: { (response) in
+        // handle reply from iPhone app here
+      }, errorHandler: {(error) -> Void in
+        // catch any errors here
+        print("Could not send score: ", error)
+      })
+    } catch {
+      print("Bad JSON")
+    }
+  }
+  
+  func completeSetToPhone(isHomeWinner: Bool) {
+    do {
+      var closeSet = CloseSet()
+      closeSet.isHomeWinner = isHomeWinner
+      closeSet.home = self.score.homeTeamGames
+      closeSet.visitor = self.score.visitorTeamGames
+      let jsonData = try JSONEncoder().encode(closeSet)
+      let jsonString = String(data: jsonData, encoding: .utf8)
+      self.session.sendMessage(["completeSet": jsonString], replyHandler: { (response) in
+        // handle reply from iPhone app here
+      }, errorHandler: {(error) -> Void in
+        // catch any errors here
+        print("Could not send score: ", error)
+      })
+    } catch {
+      print("Bad JSON")
+    }
+  }
+  
   func increaseHomeCurrentGame() {
     if (self.score.homeTeamCurrentGame == "LOVE") {
       self.score.homeTeamCurrentGame = "15"
@@ -64,11 +104,8 @@ class CommunicationHelper: NSObject, ObservableObject, WCSessionDelegate {
       self.score.homeTeamCurrentGame = "DUCE"
       self.score.visitorTeamCurrentGame = "DUCE"
     }
-    self.session.sendMessage(["text": "INCREASE_HOME_CURRENT_GAME"], replyHandler: { (response) in
-      // handle reply from iPhone app here
-    }, errorHandler: {(error ) -> Void in
-      // catch any errors here
-    })
+    
+    self.sendScoreToPhone()
   }
   
   func increaseVisitorCurrentGame() {
@@ -88,58 +125,39 @@ class CommunicationHelper: NSObject, ObservableObject, WCSessionDelegate {
       self.score.visitorTeamCurrentGame = "DUCE"
       self.score.homeTeamCurrentGame = "DUCE"
     }
-    self.session.sendMessage(["text": "INCREASE_VISITOR_CURRENT_GAME"], replyHandler: { (response) in
-      // handle reply from iPhone app here
-    }, errorHandler: {(error ) -> Void in
-      // catch any errors here
-    })
+    
+    self.sendScoreToPhone()
   }
   
   func increaseHomeGame() {
     self.score.homeTeamGames += 1
     self.score.homeTeamCurrentGame = "LOVE"
     self.score.visitorTeamCurrentGame = "LOVE"
-    self.session.sendMessage(["text": "INCREASE_HOME_GAME"], replyHandler: { (response) in
-      // handle reply from iPhone app here
-    }, errorHandler: {(error ) -> Void in
-      // catch any errors here
-    })
+    self.sendScoreToPhone()
   }
   
   func increaseVisitorGame() {
     self.score.visitorTeamGames += 1
     self.score.homeTeamCurrentGame = "LOVE"
     self.score.visitorTeamCurrentGame = "LOVE"
-    self.session.sendMessage(["text": "INCREASE_VISITOR_GAME"], replyHandler: { (response) in
-      // handle reply from iPhone app here
-    }, errorHandler: {(error ) -> Void in
-      // catch any errors here
-    })
+    self.sendScoreToPhone()
   }
   
   func increaseHomeSet() {
     self.score.homeTeamSets += 1
-    self.score.homeTeamGames = 0
-    self.score.visitorTeamGames = 0
     self.score.homeTeamCurrentGame = "LOVE"
     self.score.visitorTeamCurrentGame = "LOVE"
-    self.session.sendMessage(["text": "INCREASE_HOME_SET"], replyHandler: { (response) in
-      // handle reply from iPhone app here
-    }, errorHandler: {(error ) -> Void in
-      // catch any errors here
-    })
+    self.completeSetToPhone(isHomeWinner: true)
+    self.score.homeTeamGames = 0
+    self.score.visitorTeamGames = 0
   }
   
   func increaseVisitorSet() {
     self.score.visitorTeamSets += 1
-    self.score.homeTeamGames = 0
-    self.score.visitorTeamGames = 0
     self.score.homeTeamCurrentGame = "LOVE"
     self.score.visitorTeamCurrentGame = "LOVE"
-    self.session.sendMessage(["text": "INCREASE_VISITOR_SET"], replyHandler: { (response) in
-      // handle reply from iPhone app here
-    }, errorHandler: {(error ) -> Void in
-      // catch any errors here
-    })
+    self.completeSetToPhone(isHomeWinner: false)
+    self.score.homeTeamGames = 0
+    self.score.visitorTeamGames = 0
   }
 }

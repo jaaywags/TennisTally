@@ -1,4 +1,5 @@
 import {UPDATE_APPLE_WATCH_REACHABLE} from '../../actions/WatchActions';
+
 const initialState = {
   isAppleWatchReachable: false,
   isAndroidWatchReachable: false,
