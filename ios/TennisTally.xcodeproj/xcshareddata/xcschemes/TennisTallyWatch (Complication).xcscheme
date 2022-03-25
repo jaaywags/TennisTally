@@ -55,8 +55,10 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "32">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/TennisTallyWatch">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AD76744727E679E20062D345"
@@ -64,7 +66,7 @@
             BlueprintName = "TennisTallyWatch"
             ReferencedContainer = "container:TennisTally.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -73,8 +75,10 @@
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "32">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/TennisTallyWatch">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AD76744727E679E20062D345"
@@ -82,7 +86,16 @@
             BlueprintName = "TennisTallyWatch"
             ReferencedContainer = "container:TennisTally.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AD76744727E679E20062D345"
+            BuildableName = "TennisTallyWatch.app"
+            BlueprintName = "TennisTallyWatch"
+            ReferencedContainer = "container:TennisTally.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

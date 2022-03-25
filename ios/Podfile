@@ -29,4 +29,5 @@ target 'TennisTally' do
   end
 
   pod 'RNWatch', :path => '../node_modules/react-native-watch-connectivity'
+  pod 'Firebase/Analytics'
 end

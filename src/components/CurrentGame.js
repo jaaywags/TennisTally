@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import uuid from 'react-native-uuid';
 import {connect} from 'react-redux';
+import analytics from '@react-native-firebase/analytics';
 import {
   currentGameIncrementHomeTeam,
   currentGameDecrementHomeTeam,
@@ -77,8 +78,26 @@ const CurrentGame = ({
         <TeamWinnerBtn
           homeValue={homeSetsSum}
           visitorValue={visitorSetsSum}
-          homeCallback={homeTeamSetIncrement}
-          visitorCallback={visitorTeamSetIncrement}
+          homeCallback={async () => {
+            await analytics().logEvent('modifySets', {
+              screen: 'Home',
+              action: 'Increment',
+              team: 'Home',
+              homeSetsSum,
+              visitorSetsSum,
+            });
+            homeTeamSetIncrement();
+          }}
+          visitorCallback={async () => {
+            await analytics().logEvent('modifySets', {
+              screen: 'Home',
+              action: 'Increment',
+              team: 'Visitor',
+              homeSetsSum,
+              visitorSetsSum,
+            });
+            visitorTeamSetIncrement();
+          }}
           label="SETS"
         />
       </SetSection>
@@ -86,8 +105,26 @@ const CurrentGame = ({
         <TeamWinnerBtn
           homeValue={homeTeamGames}
           visitorValue={visitorTeamGames}
-          homeCallback={homeTeamGameIncrement}
-          visitorCallback={visitorTeamGameIncrement}
+          homeCallback={async () => {
+            await analytics().logEvent('modifyGames', {
+              screen: 'Home',
+              action: 'Increment',
+              team: 'Home',
+              homeTeamGames,
+              visitorTeamGames,
+            });
+            homeTeamGameIncrement();
+          }}
+          visitorCallback={async () => {
+            await analytics().logEvent('modifyGames', {
+              screen: 'Home',
+              action: 'Increment',
+              team: 'Visitor',
+              homeTeamGames,
+              visitorTeamGames,
+            });
+            visitorTeamGameIncrement();
+          }}
           label="GAMES"
         />
       </GameSection>
@@ -97,16 +134,52 @@ const CurrentGame = ({
         </View>
         <HomeSection>
           <PlusMinus
-            minusBtnCallback={homeTeamDecrement}
-            plusBtnCallback={homeTeamIncrement}
+            minusBtnCallback={async () => {
+              await analytics().logEvent('modifyCurrentGame', {
+                screen: 'Home',
+                action: 'Decrement',
+                team: 'Home',
+                homeTeamScore,
+                visitorTeamScore,
+              });
+              homeTeamDecrement();
+            }}
+            plusBtnCallback={async () => {
+              await analytics().logEvent('modifyCurrentGame', {
+                screen: 'Home',
+                action: 'Increment',
+                team: 'Home',
+                homeTeamScore,
+                visitorTeamScore,
+              });
+              homeTeamIncrement();
+            }}
             label="HOME"
             value={homeTeamScore}
           />
         </HomeSection>
         <VisitorSection>
           <PlusMinus
-            minusBtnCallback={visitorTeamDecrement}
-            plusBtnCallback={visitorTeamIncrement}
+            minusBtnCallback={async () => {
+              await analytics().logEvent('modifyCurrentGame', {
+                screen: 'Home',
+                action: 'Decrement',
+                team: 'Visitor',
+                homeTeamScore,
+                visitorTeamScore,
+              });
+              visitorTeamDecrement();
+            }}
+            plusBtnCallback={async () => {
+              await analytics().logEvent('modifyCurrentGame', {
+                screen: 'Home',
+                action: 'Increment',
+                team: 'Visitor',
+                homeTeamScore,
+                visitorTeamScore,
+              });
+              visitorTeamIncrement();
+            }}
             label="VISITOR"
             value={visitorTeamScore}
           />

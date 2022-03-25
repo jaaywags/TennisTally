@@ -24,6 +24,7 @@ import {
   fixSetCountFromWatch,
 } from './src/actions/SetActions/SetActions';
 import {updateAppleWatchReachable} from './src/actions/WatchActions/WatchActions';
+import analytics from '@react-native-firebase/analytics';
 
 const App = ({
   updateIsAppleWatchReachable,
@@ -53,9 +54,15 @@ const App = ({
       return;
     }
 
-    watchEvents.addListener('message', (messageFromWatch) => {
+    watchEvents.addListener('message', async (messageFromWatch) => {
       if (messageFromWatch.score) {
         const score = JSON.parse(messageFromWatch.score);
+
+        await analytics().logEvent('watchUpdatingScore', {
+          messageFromWatch,
+          score,
+        });
+
         setCurrentGameScoreFromWatch(score);
         setGamesScoreFromWatch({home: score.homeTeamGames, visitor: score.visitorTeamGames});
         const homeSetsSum = stateRef.currentSets.filter(set => set.isHomeWinner).length;
@@ -71,12 +78,24 @@ const App = ({
             visitorSets.push({isHomeWinner: false, home: 0, visitor: 0});
           }
 
+          await analytics().logEvent('watchFixingSets', {
+            messageFromWatch,
+            score,
+            sets,
+            homeSets,
+            visitorSets,
+          });
+
           fixSetCount({sets: [...homeSets, ...visitorSets]});
         }
       }
 
       if (messageFromWatch.completeSet) {
         const set = JSON.parse(messageFromWatch.completeSet);
+        await analytics().logEvent('watchCompletingSet', {
+          messageFromWatch,
+          set,
+        });
         setSetScoreFromWatch({
           home: set.home,
           visitor: set.visitor,
