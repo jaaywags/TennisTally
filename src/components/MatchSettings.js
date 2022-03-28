@@ -1,9 +1,10 @@
 import React from 'react';
-import {Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {View, FlatList, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import uuid from 'react-native-uuid';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faAngleUp, faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import analytics from '@react-native-firebase/analytics';
 import {
   gameIncrementHomeTeam,
   gameIncrementVisitorTeam,
@@ -75,27 +76,67 @@ const MatchSettings = ({
                   <Center>
                     <ModifyScoreCell odd={(index + 1) % 2 === 0}>
                       <TouchableOpacity
-                        onPress={() => increaseSetForHomeTeam(index)}>
+                        onPress={async () => {
+                          await analytics().logEvent('modifySpecificSet', {
+                            screen: 'Match',
+                            team: 'Home',
+                            action: 'Increment',
+                            index,
+                            item,
+                            sets,
+                          });
+                          increaseSetForHomeTeam(index);
+                        }}>
                         <FontAwesomeIcon icon={faAngleUp} size={32} />
                       </TouchableOpacity>
                       <ModifyMatchScoreText odd={(index + 1) % 2 === 0}>
                         {item.home}
                       </ModifyMatchScoreText>
                       <TouchableOpacity
-                        onPress={() => decreaseSetForHomeTeam(index)}>
+                        onPress={async () => {
+                          await analytics().logEvent('modifySpecificSet', {
+                            screen: 'Match',
+                            team: 'Home',
+                            action: 'Decrement',
+                            index,
+                            item,
+                            sets,
+                          });
+                          decreaseSetForHomeTeam(index);
+                        }}>
                         <FontAwesomeIcon icon={faAngleDown} size={32} />
                       </TouchableOpacity>
                     </ModifyScoreCell>
                     <ModifyScoreCell odd={(index + 1) % 2 === 0}>
                       <TouchableOpacity
-                        onPress={() => increaseSetForVisitorTeam(index)}>
+                        onPress={async () => {
+                          await analytics().logEvent('modifySpecificSet', {
+                            screen: 'Match',
+                            team: 'Visitor',
+                            action: 'Increment',
+                            index,
+                            item,
+                            sets,
+                          });
+                          increaseSetForVisitorTeam(index);
+                        }}>
                         <FontAwesomeIcon icon={faAngleUp} size={32} />
                       </TouchableOpacity>
                       <ModifyMatchScoreText odd={(index + 1) % 2 === 0}>
                         {item.visitor}
                       </ModifyMatchScoreText>
                       <TouchableOpacity
-                        onPress={() => decreaseSetForVisitorTeam(index)}>
+                        onPress={async () => {
+                          await analytics().logEvent('modifySpecificSet', {
+                            screen: 'Match',
+                            team: 'Visitor',
+                            action: 'Decrement',
+                            index,
+                            item,
+                            sets,
+                          });
+                          decreaseSetForVisitorTeam(index);
+                        }}>
                         <FontAwesomeIcon icon={faAngleDown} size={32} />
                       </TouchableOpacity>
                     </ModifyScoreCell>
@@ -118,16 +159,56 @@ const MatchSettings = ({
         </View>
         <HomeSection>
           <PlusMinus
-            minusBtnCallback={homeTeamGameDecrement}
-            plusBtnCallback={homeTeamGameIncrement}
+            minusBtnCallback={async () => {
+              await analytics().logEvent('modifyGames', {
+                screen: 'Match',
+                team: 'Home',
+                action: 'Decrement',
+                sets,
+                homeTeam,
+                visitorTeam,
+              });
+              homeTeamGameDecrement();
+            }}
+            plusBtnCallback={async () => {
+              await analytics().logEvent('modifyGames', {
+                screen: 'Match',
+                team: 'Home',
+                action: 'Increment',
+                sets,
+                homeTeam,
+                visitorTeam,
+              });
+              homeTeamGameIncrement();
+            }}
             label="HOME"
             value={homeTeam}
           />
         </HomeSection>
         <VisitorSection>
           <PlusMinus
-            minusBtnCallback={visitorTeamGameDecrement}
-            plusBtnCallback={visitorTeamGameIncrement}
+            minusBtnCallback={async () => {
+              await analytics().logEvent('modifyGames', {
+                screen: 'Match',
+                team: 'Visitor',
+                action: 'Decrement',
+                sets,
+                homeTeam,
+                visitorTeam,
+              });
+              visitorTeamGameDecrement();
+            }}
+            plusBtnCallback={async () => {
+              await analytics().logEvent('modifyGames', {
+                screen: 'Match',
+                team: 'Visitor',
+                action: 'Increment',
+                sets,
+                homeTeam,
+                visitorTeam,
+              });
+              visitorTeamGameIncrement();
+            }}
             label="VISITOR"
             value={visitorTeam}
           />

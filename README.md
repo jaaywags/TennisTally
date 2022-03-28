@@ -5,8 +5,8 @@ A little React Native app developed for practice. It can be used to keep track o
 This app is now available on both the [App Store](https://apps.apple.com/app/tennis-tally-scoring/id1614450619) and [Play Store](https://play.google.com/store/apps/details?id=com.tennistally.tennistally).
 
 ## Demo
-![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158697208-b58799c9-e107-4882-8e20-0761f50c6b6c.gif)
 
+![TennisTallyDemo](https://user-images.githubusercontent.com/38050123/158697208-b58799c9-e107-4882-8e20-0761f50c6b6c.gif)
 
 ## Running Locally
 
@@ -64,15 +64,22 @@ I wrote these steps from memory. Did not test them. There may be other steps nee
 1. Put prod keystore file in `./android/app/TennisTally.prod.keystore`
 2. Add credentials to `./android/gradle.properties`
 3. Upgrade `VersionCode` and `VersionName` in `./android/app/build.gradle`
-4. In the terminal, run `cd android`
-5. In the terminal, run `./gradlew bundleRelease`
-6. Upload `./android/app/build/outputs/bundle/release/app-release.aab` to play store
+4. Add the firebase config file, `android/app/google-services.json`
+5. In the terminal, run `cd android`
+6. In the terminal, run `./gradlew bundleRelease`
+7. Upload `./android/app/build/outputs/bundle/release/app-release.aab` to play store
 
 ### iOS
 
-1. In the terminal, run `cd ios`
-2. In the terminal, run `pod install`
-3. Update version in xcode
-4. Build in xcode
-5. Archive in xcode
-6. Go to App Store Connect & Update Version
+1. Add the firebase config file, `ios/GoogleService-Info.plist`
+2. In the terminal, run `cd ios`
+3. In the terminal, run `pod install`
+4. Update version and build in xcode
+5. Go to `Product -> Scheme -> Edit Scheme`
+6. Go to the `Run` tab and `Info` tab
+7. Change `Build Configuration` to `Release`
+8. Go to the `Run` tab and `Arguments` tab
+9. Uncheck the `Arguments Passed On Launch`
+10. Build in xcode
+11. Archive in xcode
+12. Go to App Store Connect & Update Version

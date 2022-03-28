@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TennisTally.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>2</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>44E1F2EE823E37D20E47C7C00AE40E379F25F66E</string>
+				<key>dateExpires</key>
+				<string>6/11/22</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64_32</string>
+						<string>armv7k</string>
+					</array>
+					<key>buildNumber</key>
+					<string>2</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>44E1F2EE823E37D20E47C7C00AE40E379F25F66E</string>
+						<key>dateExpires</key>
+						<string>6/11/22</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>embeddedBinaries</key>
+					<array>
+						<dict>
+							<key>architectures</key>
+							<array>
+								<string>armv7k</string>
+								<string>arm64_32</string>
+							</array>
+							<key>buildNumber</key>
+							<string>2</string>
+							<key>certificate</key>
+							<dict>
+								<key>SHA1</key>
+								<string>44E1F2EE823E37D20E47C7C00AE40E379F25F66E</string>
+								<key>dateExpires</key>
+								<string>6/11/22</string>
+								<key>type</key>
+								<string>Apple Distribution</string>
+							</dict>
+							<key>entitlements</key>
+							<dict>
+								<key>application-identifier</key>
+								<string>SLT8SJ897V.com.TennisTally.TennisTally.watchkitapp.watchkitextension</string>
+								<key>com.apple.developer.team-identifier</key>
+								<string>SLT8SJ897V</string>
+								<key>get-task-allow</key>
+								<false/>
+								<key>keychain-access-groups</key>
+								<array>
+									<string>SLT8SJ897V.com.TennisTally.TennisTally.watchkitapp.watchkitextension</string>
+								</array>
+							</dict>
+							<key>name</key>
+							<string>TennisTallyWatch2 WatchKit Extension.appex</string>
+							<key>profile</key>
+							<dict>
+								<key>UUID</key>
+								<string>8087ef41-0a5a-44cd-a139-00f338ff039b</string>
+								<key>dateExpires</key>
+								<string>3/15/23</string>
+								<key>name</key>
+								<string>iOS Team Ad Hoc Provisioning Profile: com.TennisTally.TennisTally.watchkitapp.watchkitextension</string>
+							</dict>
+							<key>team</key>
+							<dict>
+								<key>id</key>
+								<string>SLT8SJ897V</string>
+								<key>name</key>
+								<string>Jordan Wagner</string>
+							</dict>
+							<key>versionNumber</key>
+							<string>1.10.0</string>
+						</dict>
+					</array>
+					<key>entitlements</key>
+					<dict>
+						<key>application-identifier</key>
+						<string>SLT8SJ897V.com.TennisTally.TennisTally.watchkitapp</string>
+						<key>com.apple.developer.team-identifier</key>
+						<string>SLT8SJ897V</string>
+						<key>get-task-allow</key>
+						<false/>
+						<key>keychain-access-groups</key>
+						<array>
+							<string>SLT8SJ897V.com.TennisTally.TennisTally.watchkitapp</string>
+						</array>
+					</dict>
+					<key>name</key>
+					<string>TennisTallyWatch2.app</string>
+					<key>profile</key>
+					<dict>
+						<key>UUID</key>
+						<string>641da986-c501-4f93-879b-9c7c68162ebb</string>
+						<key>dateExpires</key>
+						<string>3/15/23</string>
+						<key>name</key>
+						<string>iOS Team Ad Hoc Provisioning Profile: com.TennisTally.TennisTally.watchkitapp</string>
+					</dict>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>SLT8SJ897V</string>
+						<key>name</key>
+						<string>Jordan Wagner</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>1.10.0</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>SLT8SJ897V.com.TennisTally.TennisTally</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>SLT8SJ897V</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>SLT8SJ897V.com.TennisTally.TennisTally</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>TennisTally.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>5cae5d7d-59cb-4da6-816a-4d86d44cc8e4</string>
+				<key>dateExpires</key>
+				<string>3/15/23</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: com.TennisTally.TennisTally</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>SLT8SJ897V</string>
+				<key>name</key>
+				<string>Jordan Wagner</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.10.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

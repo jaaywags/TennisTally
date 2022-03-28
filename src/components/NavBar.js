@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHome, faGear, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import analytics from '@react-native-firebase/analytics';
 import CurrentGame from './CurrentGame';
 import MatchSettings from './MatchSettings';
 import {resetEverything} from '../actions/MatchActions/MatchActions';
@@ -24,8 +25,26 @@ const tabIcon = (screenName, color) => {
 const ButtonScreen = () => null;
 
 const NavBar = ({resetMatch}) => {
+  const routeNameRef = useRef();
+  const navigationRef = useRef();
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={() => {
+        routeNameRef.current = navigationRef.current.getCurrentRoute().name;
+      }}
+      onStateChange={async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          await analytics().logScreenView({
+            screen_name: currentRouteName,
+            screen_class: currentRouteName,
+          });
+        }
+        routeNameRef.current = currentRouteName;
+      }}>
       <Tab.Navigator
         labeled={false}
         screenOptions={({route}) => ({
@@ -42,7 +61,13 @@ const NavBar = ({resetMatch}) => {
           name="Reset"
           options={{
             tabBarButton: props => (
-              <TouchableOpacity {...props} onPress={() => resetMatch()} />
+              <TouchableOpacity
+                {...props}
+                onPress={async () => {
+                  await analytics().logEvent('resetMatch', {});
+                  resetMatch();
+                }}
+              />
             ),
           }}
           component={ButtonScreen}
